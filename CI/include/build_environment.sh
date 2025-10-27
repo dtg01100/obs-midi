@@ -1,0 +1,3 @@
+PRODUCT_NAME="obs-midi"
+PRODUCT_VERSION="0.9.0"
+LINUX_MAINTAINER_EMAIL="cpyarger@gmail.com"

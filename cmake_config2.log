@@ -1,0 +1,13 @@
+-- libremidi: Using std::vector for libremidi::message
+-- libremidi: using ALSA
+-- libremidi: ALSA RawMIDI: 1
+-- libremidi: ALSA UMP: 
+-- libremidi: udev support
+-- libremidi: using linked JACK
+-- libremidi: using PipeWire
+-- Performing Test HAVE_STDATOMIC
+-- Performing Test HAVE_STDATOMIC - Success
+-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so   
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /workspace/build

@@ -1,0 +1,135 @@
+[ 44%] Built target libremidi
+[ 48%] Automatic MOC and UIC for target obs-midi
+[ 48%] Built target obs-midi_autogen
+Consolidate compiler generated dependencies of target obs-midi
+[ 51%] Building CXX object CMakeFiles/obs-midi.dir/obs-midi_autogen/mocs_compilation.cpp.o
+[ 55%] Building CXX object CMakeFiles/obs-midi.dir/src/device-manager.cpp.o
+[ 59%] Building CXX object CMakeFiles/obs-midi.dir/src/events.cpp.o
+[ 62%] Building CXX object CMakeFiles/obs-midi.dir/src/obs-midi.cpp.o
+[ 66%] Building CXX object CMakeFiles/obs-midi.dir/src/forms/settings-dialog.cpp.o
+In file included from /workspace/src/forms/../midi-agent.h:34,
+                 from /workspace/src/forms/settings-dialog.h:18,
+                 from /workspace/src/obs-midi.cpp:17:
+/workspace/src/forms/../obs-controller.h: In member function ‘virtual void Actions::set_data(obs_data_t*)’:
+/workspace/src/forms/../obs-controller.h:41:43: warning: unused parameter ‘data’ [-Wunused-parameter]
+   41 |         virtual void set_data(obs_data_t *data){};
+      |                               ~~~~~~~~~~~~^~~~
+/workspace/src/forms/../obs-controller.h: In member function ‘virtual void Actions::set_data(QString)’:
+/workspace/src/forms/../obs-controller.h:42:39: warning: unused parameter ‘datastring’ [-Wunused-parameter]
+   42 |         virtual void set_data(QString datastring){};
+      |                               ~~~~~~~~^~~~~~~~~~
+In file included from /workspace/src/midi-agent.h:34,
+                 from /workspace/src/device-manager.h:39,
+                 from /workspace/src/events.h:42,
+                 from /workspace/src/events.cpp:26:
+/workspace/src/obs-controller.h: In member function ‘virtual void Actions::set_data(obs_data_t*)’:
+/workspace/src/obs-controller.h:41:43: warning: unused parameter ‘data’ [-Wunused-parameter]
+   41 |         virtual void set_data(obs_data_t *data){};
+      |                               ~~~~~~~~~~~~^~~~
+/workspace/src/obs-controller.h: In member function ‘virtual void Actions::set_data(QString)’:
+/workspace/src/obs-controller.h:42:39: warning: unused parameter ‘datastring’ [-Wunused-parameter]
+   42 |         virtual void set_data(QString datastring){};
+      |                               ~~~~~~~~^~~~~~~~~~
+In file included from /workspace/src/forms/../midi-agent.h:34,
+                 from /workspace/src/forms/settings-dialog.h:18,
+                 from /workspace/src/forms/settings-dialog.cpp:32:
+/workspace/src/forms/../obs-controller.h: In member function ‘virtual void Actions::set_data(obs_data_t*)’:
+/workspace/src/forms/../obs-controller.h:41:43: warning: unused parameter ‘data’ [-Wunused-parameter]
+   41 |         virtual void set_data(obs_data_t *data){};
+      |                               ~~~~~~~~~~~~^~~~
+/workspace/src/forms/../obs-controller.h: In member function ‘virtual void Actions::set_data(QString)’:
+/workspace/src/forms/../obs-controller.h:42:39: warning: unused parameter ‘datastring’ [-Wunused-parameter]
+   42 |         virtual void set_data(QString datastring){};
+      |                               ~~~~~~~~^~~~~~~~~~
+In file included from /workspace/src/events.cpp:31:
+/workspace/src/macro-helpers.h: In function ‘void Macro::Toggle(MidiAgent*, MidiMessage*)’:
+/workspace/src/macro-helpers.h:30:31: warning: unused parameter ‘agent’ [-Wunused-parameter]
+   30 | inline void Toggle(MidiAgent *agent, MidiMessage *message)
+      |                    ~~~~~~~~~~~^~~~~
+/workspace/src/macro-helpers.h: In function ‘void Macro::set_on_off(MidiAgent*, MidiMessage*, bool)’:
+/workspace/src/macro-helpers.h:43:42: warning: unused parameter ‘agent’ [-Wunused-parameter]
+   43 | inline static void set_on_off(MidiAgent *agent, MidiMessage *message, bool on)
+      |                               ~~~~~~~~~~~^~~~~
+/workspace/src/macro-helpers.h: In function ‘void Macro::swap_buttons(MidiAgent*, MidiMessage*, int, int)’:
+/workspace/src/macro-helpers.h:54:44: warning: unused parameter ‘agent’ [-Wunused-parameter]
+   54 | inline static void swap_buttons(MidiAgent *agent, MidiMessage *message, int button1, int button2)
+      |                                 ~~~~~~~~~~~^~~~~
+/workspace/src/macro-helpers.h: In function ‘void Macro::set_volume(MidiAgent*, MidiMessage*, double)’:
+/workspace/src/macro-helpers.h:75:42: warning: unused parameter ‘agent’ [-Wunused-parameter]
+   75 | inline static void set_volume(MidiAgent *agent, MidiMessage *message, double vol)
+      |                               ~~~~~~~~~~~^~~~~
+/workspace/src/macro-helpers.h: In function ‘void Macro::reset_midi(MidiAgent*)’:
+/workspace/src/macro-helpers.h:81:42: warning: unused parameter ‘agent’ [-Wunused-parameter]
+   81 | inline static void reset_midi(MidiAgent *agent)
+      |                               ~~~~~~~~~~~^~~~~
+In file included from /workspace/src/events.cpp:26:
+/workspace/src/events.h: In constructor ‘Events::Events()’:
+/workspace/src/events.h:143:18: warning: ‘Events::_lastBytesSentTime’ will be initialized after [-Wreorder]
+  143 |         uint64_t _lastBytesSentTime;
+      |                  ^~~~~~~~~~~~~~~~~~
+/workspace/src/events.h:72:14: warning:   ‘bool Events::HeartbeatIsActive’ [-Wreorder]
+   72 |         bool HeartbeatIsActive;
+      |              ^~~~~~~~~~~~~~~~~
+/workspace/src/events.cpp:61:1: warning:   when initialized here [-Wreorder]
+   61 | Events::Events() : _streamStarttime(0), _lastBytesSent(0), _lastBytesSentTime(0), HeartbeatIsActive(false), pulse(false)
+      | ^~~~~~
+/workspace/src/events.cpp: In static member function ‘static void Events::FrontendEventHandler(obs_frontend_event, void*)’:
+/workspace/src/events.cpp:111:16: warning: enumeration value ‘OBS_FRONTEND_EVENT_FINISHED_LOADING’ not handled in switch [-Wswitch]
+  111 |         switch (event) {
+      |                ^
+/workspace/src/events.cpp:205:9: warning: case value ‘9999’ not in enumerated type ‘obs_frontend_event’ [-Wswitch]
+  205 |         case OBS_FRONTEND_EVENT_REPLAY_BUFFER_SAVED:
+      |         ^~~~
+/workspace/src/forms/settings-dialog.cpp: In member function ‘void PluginWindow::set_all_cell_colors(int)’:
+/workspace/src/forms/settings-dialog.cpp:351:50: warning: unused parameter ‘row’ [-Wunused-parameter]
+  351 | void PluginWindow::set_all_cell_colors(const int row)
+      |                                        ~~~~~~~~~~^~~
+In file included from /workspace/src/midi-agent.h:34,
+                 from /workspace/src/device-manager.h:39,
+                 from /workspace/src/device-manager.cpp:14:
+/workspace/src/obs-controller.h: In member function ‘virtual void Actions::set_data(obs_data_t*)’:
+/workspace/src/obs-controller.h:41:43: warning: unused parameter ‘data’ [-Wunused-parameter]
+   41 |         virtual void set_data(obs_data_t *data){};
+      |                               ~~~~~~~~~~~~^~~~
+/workspace/src/obs-controller.h: In member function ‘virtual void Actions::set_data(QString)’:
+/workspace/src/obs-controller.h:42:39: warning: unused parameter ‘datastring’ [-Wunused-parameter]
+   42 |         virtual void set_data(QString datastring){};
+      |                               ~~~~~~~~^~~~~~~~~~
+In file included from /workspace/build/obs-midi_autogen/UVLADIE3JM/../../../src/midi-agent.h:34,
+                 from /workspace/build/obs-midi_autogen/UVLADIE3JM/../../../src/device-manager.h:39,
+                 from /workspace/build/obs-midi_autogen/UVLADIE3JM/../../../src/config.h:25,
+                 from /workspace/build/obs-midi_autogen/UVLADIE3JM/moc_config.cpp:10,
+                 from /workspace/build/obs-midi_autogen/mocs_compilation.cpp:3:
+/workspace/build/obs-midi_autogen/UVLADIE3JM/../../../src/obs-controller.h: In member function ‘virtual void Actions::set_data(obs_data_t*)’:
+/workspace/build/obs-midi_autogen/UVLADIE3JM/../../../src/obs-controller.h:41:43: warning: unused parameter ‘data’ [-Wunused-parameter]
+   41 |         virtual void set_data(obs_data_t *data){};
+      |                               ~~~~~~~~~~~~^~~~
+/workspace/build/obs-midi_autogen/UVLADIE3JM/../../../src/obs-controller.h: In member function ‘virtual void Actions::set_data(QString)’:
+/workspace/build/obs-midi_autogen/UVLADIE3JM/../../../src/obs-controller.h:42:39: warning: unused parameter ‘datastring’ [-Wunused-parameter]
+   42 |         virtual void set_data(QString datastring){};
+      |                               ~~~~~~~~^~~~~~~~~~
+In file included from /workspace/src/forms/../rpc/RpcEvent.h:25,
+                 from /workspace/src/forms/../midi-agent.h:32,
+                 from /workspace/src/forms/settings-dialog.h:18,
+                 from /workspace/src/forms/settings-dialog.cpp:32:
+/workspace/src/forms/../rpc/../obs-midi.h: At global scope:
+/workspace/src/forms/../rpc/../obs-midi.h:25:22: warning: ‘plugin_window’ defined but not used [-Wunused-variable]
+   25 | static PluginWindow *plugin_window;
+      |                      ^~~~~~~~~~~~~
+In file included from /workspace/src/rpc/RpcEvent.h:25,
+                 from /workspace/src/device-manager.h:38,
+                 from /workspace/src/device-manager.cpp:14:
+/workspace/src/rpc/../obs-midi.h: At global scope:
+/workspace/src/rpc/../obs-midi.h:25:22: warning: ‘plugin_window’ defined but not used [-Wunused-variable]
+   25 | static PluginWindow *plugin_window;
+      |                      ^~~~~~~~~~~~~
+In file included from /workspace/build/obs-midi_autogen/UVLADIE3JM/../../../src/utils.h:25,
+                 from /workspace/build/obs-midi_autogen/UVLADIE3JM/../../../src/Midi_hook.h:4,
+                 from /workspace/build/obs-midi_autogen/UVLADIE3JM/moc_Midi_hook.cpp:10,
+                 from /workspace/build/obs-midi_autogen/mocs_compilation.cpp:2:
+/workspace/build/obs-midi_autogen/UVLADIE3JM/../../../src/obs-midi.h: At global scope:
+/workspace/build/obs-midi_autogen/UVLADIE3JM/../../../src/obs-midi.h:25:22: warning: ‘plugin_window’ defined but not used [-Wunused-variable]
+   25 | static PluginWindow *plugin_window;
+      |                      ^~~~~~~~~~~~~
+[ 70%] Linking CXX shared module obs-midi.so
+[100%] Built target obs-midi

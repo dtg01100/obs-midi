@@ -1,0 +1,11 @@
+Hit:1 http://archive.ubuntu.com/ubuntu jammy InRelease
+Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Hit:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
+Hit:5 https://ppa.launchpadcontent.net/obsproject/obs-studio/ubuntu jammy InRelease
+Get:6 http://security.ubuntu.com/ubuntu jammy-security/main Sources [410 kB]
+Get:7 http://security.ubuntu.com/ubuntu jammy-security/restricted Sources [104 kB]
+Get:8 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [5,878 kB]
+Get:9 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [3,479 kB]
+Fetched 10.0 MB in 4s (2,584 kB/s)
+Reading package lists...

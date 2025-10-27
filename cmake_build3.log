@@ -1,0 +1,30 @@
+[ 44%] Built target libremidi
+[ 48%] Automatic MOC and UIC for target obs-midi
+[ 48%] Built target obs-midi_autogen
+Consolidate compiler generated dependencies of target obs-midi
+[ 51%] Building CXX object CMakeFiles/obs-midi.dir/src/forms/settings-dialog.cpp.o
+In file included from /workspace/src/forms/../midi-agent.h:34,
+                 from /workspace/src/forms/settings-dialog.h:18,
+                 from /workspace/src/forms/settings-dialog.cpp:32:
+/workspace/src/forms/../obs-controller.h: In member function ‘virtual void Actions::set_data(obs_data_t*)’:
+/workspace/src/forms/../obs-controller.h:41:43: warning: unused parameter ‘data’ [-Wunused-parameter]
+   41 |         virtual void set_data(obs_data_t *data){};
+      |                               ~~~~~~~~~~~~^~~~
+/workspace/src/forms/../obs-controller.h: In member function ‘virtual void Actions::set_data(QString)’:
+/workspace/src/forms/../obs-controller.h:42:39: warning: unused parameter ‘datastring’ [-Wunused-parameter]
+   42 |         virtual void set_data(QString datastring){};
+      |                               ~~~~~~~~^~~~~~~~~~
+/workspace/src/forms/settings-dialog.cpp: In member function ‘void PluginWindow::set_all_cell_colors(int)’:
+/workspace/src/forms/settings-dialog.cpp:351:50: warning: unused parameter ‘row’ [-Wunused-parameter]
+  351 | void PluginWindow::set_all_cell_colors(const int row)
+      |                                        ~~~~~~~~~~^~~
+In file included from /workspace/src/forms/../rpc/RpcEvent.h:25,
+                 from /workspace/src/forms/../midi-agent.h:32,
+                 from /workspace/src/forms/settings-dialog.h:18,
+                 from /workspace/src/forms/settings-dialog.cpp:32:
+/workspace/src/forms/../rpc/../obs-midi.h: At global scope:
+/workspace/src/forms/../rpc/../obs-midi.h:25:22: warning: ‘plugin_window’ defined but not used [-Wunused-variable]
+   25 | static PluginWindow *plugin_window;
+      |                      ^~~~~~~~~~~~~
+[ 55%] Linking CXX shared module obs-midi.so
+[100%] Built target obs-midi

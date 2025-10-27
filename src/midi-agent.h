@@ -23,6 +23,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>
 #include <QtCore/QSharedPointer>
 
 #include "libremidi/include/libremidi/libremidi.hpp"
+#include "libremidi_compat.h"
 #if __has_include(<obs-frontend-api.h>)
 #include <obs-frontend-api.h>
 #else
@@ -74,7 +75,10 @@ signals:
 
 private:
 	bool loading = true;
-	libremidi::midi_in midiin;
+	// Use a small compatibility wrapper around the bundled libremidi v4 API
+	// which provides the legacy, RtMidi-like interface expected by the
+	// existing code (get_port_count/get_port_name/set_callback etc.).
+	libremidi_compat::midi_in midiin;
 	QString midi_input_name;
 	bool sending{};
 	int input_port = -1;

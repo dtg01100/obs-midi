@@ -1,5 +1,5 @@
-#include <QtWidgets/QAction>
-#include <QtWidgets/QMainWindow>
+#include <QAction>
+#include <QMainWindow>
 
 #include <iostream>
 #include <obs-module.h>
@@ -8,7 +8,8 @@
 #else
 #include <obs-frontend-api/obs-frontend-api.h>
 #endif
-#include "libremidi/include/libremidi/libremidi.hpp"#include <obs-data.h>
+#include <libremidi/libremidi.hpp>
+#include <obs-data.h>
 #include <utility>
 
 #include "obs-midi.h"

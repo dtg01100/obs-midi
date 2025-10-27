@@ -26,20 +26,24 @@ public:
 public slots:
 	void ToggleShowHide();
 private slots:
-	void on_check_enabled_state_changed(int state) const;
-	void on_device_select(const QString &curitem) const;
-	void handle_midi_message(const MidiMessage &mess) const;
-	void obs_actions_select(const QString &action) const;
+	void handle_check_enabled_state_changed(int state);
+	void handle_device_select(const QString &curitem);
+	// Auto-connect friendly aliases (match UI signal names)
+	void on_check_enabled_stateChanged(int state);
+	void on_list_midi_dev_currentRowChanged(int currentRow);
+	void handle_midi_message(const MidiMessage &mess);
+	void obs_actions_select(const QString &action);
 	void set_edit_mode();
 	void save_edit();
 
-	void reset_to_defaults() const;
-	void clear_actions_box(QLayout *layout)const;
-	void set_all_cell_colors(int row) const;
-	void tab_changed(int tab) const;
-	void clear_table() const;
-	void remove_hook(MidiMapping *hook) const;
-	void delete_mapping() const;
+	void reset_to_defaults();
+	void clear_actions_box(QLayout *layout);
+	void set_all_cell_colors(int row);
+	void tab_changed(int tab);
+	void clear_table();
+	void remove_hook(MidiMapping *hook);
+	void delete_mapping();
+	void add_new_mapping();
 	void edit_mapping();
 	//static void set_cell_colors(const QColor &color, QTableWidgetItem *item);
 
@@ -51,22 +55,22 @@ private:
 	bool listening = false;
 	//void configure_table() const;
 	void set_title_window();
-	void connect_ui_signals() const;
-	void setup_actions() const;
+	void connect_ui_signals();
+	void setup_actions();
 	//	void setCheck(bool check); // not implemented
 	void load_devices();
 
 	//static QStringList translatelist(QStringList list);
 	
-	void add_midi_device(const QString &Name) const;
+	void add_midi_device(const QString &Name);
 	//void set_headers() const;
-	void set_configure_title(const QString &title) const;
-	void disconnect_midi_message_handler() const;
-	void connect_midi_message_handler() const;
+	void set_configure_title(const QString &title);
+	void disconnect_midi_message_handler();
+	void connect_midi_message_handler();
 	bool map_exists() const;
 	bool verify_mapping() const;
-	void add_row_from_hook(const MidiMapping *hook) const;
-	void load_table() const;
+	void add_row_from_hook(const MidiMapping *hook);
+	void load_table();
 	void table_select(int selection);
 	void midi_message_select(MidiMapping *hook);
 private:

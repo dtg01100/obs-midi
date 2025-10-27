@@ -69,8 +69,9 @@ int Utils::t_bar_mapper(int x)
 }
 bool Utils::is_number(const QString &s)
 {
-	const QRegExp re("\\d*"); // a digit (\d), zero or more times (*)
-	return re.exactMatch(s);
+	// QRegExp is deprecated/removed in Qt6; use QRegularExpression instead.
+	const QRegularExpression re("^\\d*$"); // digits only
+	return re.match(s).hasMatch();
 }
 bool Utils::isJSon(const QString &val)
 {

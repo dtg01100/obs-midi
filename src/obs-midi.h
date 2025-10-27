@@ -5,6 +5,7 @@
 #include <optional>
 
 #include <obs.hpp>
+#include "obs_frontend_compat.h"
 
 
 void ___data_item_dummy_addref(obs_data_item_t *);

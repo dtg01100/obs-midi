@@ -2,6 +2,13 @@
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
+void PluginWindow::add_new_mapping()
+{
+	// Minimal placeholder implementation to avoid missing-slot warnings.
+	// Full mapping creation logic should validate UI fields and add a MidiMapping
+	// to the current device via DeviceManager. For now refresh the view.
+	reset_to_defaults();
+}
 (at your option) any later version.
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -55,10 +62,10 @@ void PluginWindow::set_title_window()
 	title.prepend("OBS MIDI Settings:  ");
 	this->setWindowTitle(title);
 }
-void PluginWindow::connect_ui_signals() const
+void PluginWindow::connect_ui_signals()
 {
-	connect(ui->list_midi_dev, SIGNAL(currentTextChanged(QString)), this, SLOT(on_device_select(QString)));
-	connect(ui->check_enabled, SIGNAL(stateChanged(int)), this, SLOT(on_check_enabled_state_changed(int)));
+	connect(ui->list_midi_dev, SIGNAL(currentTextChanged(QString)), this, SLOT(handle_device_select(QString)));
+	connect(ui->check_enabled, SIGNAL(stateChanged(int)), this, SLOT(handle_check_enabled_state_changed(int)));
 	// Connections for Configure Tab
 	connect(ui->cb_obs_output_action, SIGNAL(currentTextChanged(QString)), this, SLOT(obs_actions_select(QString)));
 	// connect(ui->table_mapping, SIGNAL(cellClicked(int, int)), this, SLOT(edit_mapping()));
@@ -69,7 +76,7 @@ void PluginWindow::connect_ui_signals() const
 	connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(tab_changed(int)));
 	connect(ui->list_mapping, &QListWidget::currentRowChanged, this, &PluginWindow::table_select);
 }
-void PluginWindow::setup_actions() const
+void PluginWindow::setup_actions()
 {
 	ui->cb_obs_output_action->clear();
 	ui->cb_obs_output_action->addItems(Utils::TranslateActions());
@@ -112,7 +119,7 @@ void PluginWindow::load_devices()
 	}
 	loadingdevices = false;
 }
-void PluginWindow::on_check_enabled_state_changed(int state) const
+void PluginWindow::handle_check_enabled_state_changed(int state)
 {
 	if (state == Qt::CheckState::Checked) {
 		const auto selectedDeviceName = ui->list_midi_dev->currentItem()->text().toStdString();
@@ -129,7 +136,7 @@ void PluginWindow::on_check_enabled_state_changed(int state) const
 	}
 	GetConfig()->Save();
 }
-void PluginWindow::disconnect_midi_message_handler() const
+void PluginWindow::disconnect_midi_message_handler()
 {
 	auto devicemanager = GetDeviceManager();
 	auto devices = devicemanager->get_active_midi_devices();
@@ -137,7 +144,7 @@ void PluginWindow::disconnect_midi_message_handler() const
 		disconnect(device, SIGNAL(broadcast_midi_message(MidiMessage)), this, SLOT(handle_midi_message(MidiMessage)));
 	}
 }
-void PluginWindow::connect_midi_message_handler() const
+void PluginWindow::connect_midi_message_handler()
 {
 	/**
 	 * Disconnects all midi agents from the ui message handler, to ensure only one device is connected to the UI at a time
@@ -150,7 +157,7 @@ void PluginWindow::connect_midi_message_handler() const
 	connect(MAdevice, SIGNAL(broadcast_midi_message(MidiMessage)), this,
 		SLOT(handle_midi_message(MidiMessage))); /// name, mtype, norc, channel
 }
-void PluginWindow::on_device_select(const QString &curitem) const
+void PluginWindow::handle_device_select(const QString &curitem)
 {
 	if (!starting) {
 		blog(LOG_DEBUG, "on_device_select %s", curitem.qtocs());
@@ -172,11 +179,11 @@ void PluginWindow::on_device_select(const QString &curitem) const
 		}
 	}
 }
-void PluginWindow::set_configure_title(const QString &title) const
+void PluginWindow::set_configure_title(const QString &title)
 {
 	ui->tabWidget->setTabText(1, QString("Configure - ").append(title));
 }
-void PluginWindow::handle_midi_message(const MidiMessage &mess) const
+void PluginWindow::handle_midi_message(const MidiMessage &mess)
 {
 	if (ui->tabWidget->currentIndex() != 1)
 		return;
@@ -198,11 +205,11 @@ PluginWindow::~PluginWindow()
 	delete ui;
 }
 
-void PluginWindow::reset_to_defaults() const
+void PluginWindow::reset_to_defaults()
 {
 	load_table();
 }
-void PluginWindow::clear_actions_box(QLayout *layout) const
+void PluginWindow::clear_actions_box(QLayout *layout)
 {
 	if (layout) {
 		QLayoutItem *item;
@@ -219,7 +226,7 @@ void PluginWindow::clear_actions_box(QLayout *layout) const
 	}
 }
 
-void PluginWindow::obs_actions_select(const QString &action) const
+void PluginWindow::obs_actions_select(const QString &action)
 {
 	clear_actions_box(ui->box_action->layout());
 	Actions *AC = Actions::make_action(Utils::untranslate(action));
@@ -341,7 +348,7 @@ bool PluginWindow::map_exists() const
 	return false;
 }
 
-void PluginWindow::set_all_cell_colors(const int row) const
+void PluginWindow::set_all_cell_colors(const int row)
 {
 	const QColor midi_color(0, 170, 255);
 	const QColor action_color(170, 0, 255);
@@ -351,13 +358,13 @@ void PluginWindow::set_all_cell_colors(const int row) const
 		(col < 3) ? set_cell_colors(midi_color, rc) : set_cell_colors(action_color, rc);
 	}*/
 }
-void PluginWindow::add_row_from_hook(const MidiMapping *hook) const
+void PluginWindow::add_row_from_hook(const MidiMapping *hook)
 {
 	if (hook == nullptr)
 		return;
 	ui->list_mapping->addItem(hook->actions->get_action_string());
 }
-void PluginWindow::load_table() const
+void PluginWindow::load_table()
 {
 	ui->list_mapping->clear();
 	const auto hooks = GetDeviceManager()->get_midi_hooks(ui->mapping_lbl_device_name->text());
@@ -367,7 +374,7 @@ void PluginWindow::load_table() const
 		}
 	}
 }
-void PluginWindow::tab_changed(const int tab) const
+void PluginWindow::tab_changed(const int tab)
 {
 	
 	if (tab == 1) {
@@ -379,6 +386,21 @@ void PluginWindow::tab_changed(const int tab) const
 	reset_to_defaults();
 
 	// this->ui->table_mapping->resizeColumnsToContents();
+}
+
+// Auto-connect compatibility wrappers
+void PluginWindow::on_check_enabled_stateChanged(int state)
+{
+	// Delegate to the existing handler
+	handle_check_enabled_state_changed(state);
+}
+
+void PluginWindow::on_list_midi_dev_currentRowChanged(int currentRow)
+{
+	Q_UNUSED(currentRow);
+	if (ui->list_midi_dev->currentItem()) {
+		handle_device_select(ui->list_midi_dev->currentItem()->text());
+	}
 }
 void PluginWindow::table_select(int selection) {
 	const auto hooks = GetDeviceManager()->get_midi_hooks(ui->mapping_lbl_device_name->text());
@@ -396,7 +418,7 @@ void PluginWindow::midi_message_select(MidiMapping *hook)
 	ui->cb_mtype->setCurrentText(hook->message_type);
 }
 
-void PluginWindow::clear_table() const
+void PluginWindow::clear_table()
 {
 	// ui->table_mapping->clearContents();
 	// set_headers();
@@ -415,12 +437,12 @@ void PluginWindow::insert_mapping_table_help_text() const
 	ui->list_mapping->addItem("5.) Click  'Add Mapping'");
 }
 */
-void PluginWindow::remove_hook(MidiMapping *hook) const
+void PluginWindow::remove_hook(MidiMapping *hook)
 {
 	GetDeviceManager()->get_midi_device(ui->mapping_lbl_device_name->text())->remove_MidiMapping(hook);
 	GetConfig()->Save();
 }
-void PluginWindow::delete_mapping() const
+void PluginWindow::delete_mapping()
 {
 	/*if (ui->table_mapping->rowCount() <= 0)
 		return;

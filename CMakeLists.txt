@@ -55,8 +55,21 @@ target_sources(${CMAKE_PROJECT_NAME}
 find_package(libobs REQUIRED)
 find_package(obs-frontend-api REQUIRED)
 include(external/ObsPluginHelpers.cmake)
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Widgets REQUIRED)
+# Prefer Qt6 when available (system OBS may be built against Qt6). Fall back to Qt5.
+option(USE_QT6 "Prefer Qt6 if available" ON)
+if(USE_QT6)
+	find_package(Qt6 COMPONENTS Core Widgets QUIET)
+endif()
+
+if(TARGET Qt6::Core)
+	set(QT_CORE Qt6::Core)
+	set(QT_WIDGETS Qt6::Widgets)
+else()
+	find_package(Qt5Core REQUIRED)
+	find_package(Qt5Widgets REQUIRED)
+	set(QT_CORE Qt5::Core)
+	set(QT_WIDGETS Qt5::Widgets)
+endif()
 
 
 
@@ -71,8 +84,8 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 		libremidi
 		OBS::libobs
 		OBS::obs-frontend-api
-		Qt5::Core
-		Qt5::Widgets)
+		${QT_CORE}
+		${QT_WIDGETS})
 
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
 	AUTOMOC ON
